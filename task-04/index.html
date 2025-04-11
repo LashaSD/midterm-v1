@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 3</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+  <body>
+    <div class="container">
+      <!--
+        - გვერდის ჩატვირთვისას დახატეთ ყველა მომხარებელი რომელიც `index.js` ფაილიშია
+        - `search` input-ის გამოყენებით უნდა შეგეძლოს მომხმარებლების ძებნა
+        - მომხმარებლების ძებნა უნდა ხდებოდეს სახელის მიხედვით
+        - ძებნა უნდა ხდებოდეს დაბალ რეგისტრში (მაგ: `john` და `John` ერთნაირად უნდა მოიძებნოს)
+
+
+        იხილით ვიდეო example.mp4
+       -->
+      <label class="search-label" for="search"> Search </label>
+      <input id="search" class="search-input" />
+
+      <div id="userList" class="user-list">
+        <!-- <div class="card">
+          <div class="card-header">
+            <div class="user-info">
+              <div class="avatar">
+                <img src="https://fakeimg.pl/150x150" alt="John Doe" />
+              </div>
+              <div class="user-details">
+                <h3>John Doe</h3>
+                <p class="user-email">john@example.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <p class="user-id">User ID: 1</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <script src="./index.js" defer></script>
+  </body>
+</html>
