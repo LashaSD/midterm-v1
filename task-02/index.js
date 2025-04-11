@@ -161,16 +161,38 @@ const students = [
   },
 ];
 
+function getAverage(student) {
+  return Object.values(student.grades).reduce((accum, val) => accum + val, 0) / Object.values(student.grades).length;
+}
+
 function getSubjectsStatistics(students) {
-  // თქვენი კოდი აქ
+  let arr = [];
+  students.forEach(student => {
+    arr.push({
+      name: `${student.firstName} ${student.lastName}`,
+      average: getAverage(student)    
+    })
+  });
+  return arr;
 }
 
 function getHighAchievers(students, gradeThreshold) {
-  // თქვენი კოდი აქ
+  let filtered = students.filter((student) => getAverage(student) > gradeThreshold);
+  return filtered.map((student) => `${student.firstName} ${student.lastName}`);
 }
 
 function getMultiAchivers(students, threshold) {
-  // თქვენი კოდი აქ
+  const arr = [];
+  students.forEach(student => {
+    const cnt = Object.values(student.grades).reduce((accum, val) => val > threshold ? accum + 1 : accum, 0)
+    if (cnt >= 2) {
+      arr.push({
+        name: `${student.firstName} ${student.lastName}`,
+        expertSubjects: cnt
+      })
+    }
+  })
+  return arr;
 }
 
 // ტესტები
