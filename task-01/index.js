@@ -28,6 +28,46 @@
 
 // თქვენი კოდი აქ
 
+function Shape(name, color) {
+   this.name = name;
+   this.color = color;
+}
+
+Shape.prototype.getInfo = function() {
+   return `This is a ${this.name} and its color is ${color}`
+}
+
+function Circle(name, color, radius) {
+   Shape.call(this, name, color);
+   this.radius = radius;
+}
+
+Circle.prototype.getArea = function() {
+   return Math.PI * this.radius * this.radius;
+}
+
+Circle.prototype.getInfo = function() {
+   return `This is a ${this.name} and its color is ${this.color}. It has a radius of ${this.radius}`
+}
+
+Object.setPrototypeOf(Circle, Object.create(Shape));
+
+function Rectangle(name, color, width, height) {
+   Shape.call(this, name, color);
+   this.width = width;
+   this.height = height;
+}
+
+Rectangle.prototype.getArea = function() {
+   return this.width * this.height;
+}
+
+Rectangle.prototype.getInfo = function() {
+   return `This is a ${this.name} and its color is ${this.color}. It has width ${this.width} and height ${this.height}`
+}
+
+Object.setPrototypeOf(Rectangle, Object.create(Shape));
+
 // ტესტის შემთხვევები
 const circle = new Circle("circle", "red", 5);
 const rectangle = new Rectangle("rectangle", "blue", 4, 6);
