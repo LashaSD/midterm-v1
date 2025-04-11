@@ -64,3 +64,52 @@ const users = [
     avatar: "https://fakeimg.pl/150x150",
   },
 ];
+
+function userCreate(user) {
+  let card = document.createElement('div');
+  card.innerHTML = `
+    <div class="card">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="avatar">
+            <img src="https://fakeimg.pl/150x150" alt="${user.name}" />
+          </div>
+          <div class="user-details">
+            <h3>${user.name}</h3>
+            <p class="user-email">${user.email}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="user-id">User ID: ${user.id}</p>
+      </div>
+    </div>
+  `
+  return card;
+}
+
+const input = document.querySelector("#search");
+const cardsContainer = document.querySelector('#userList');
+
+input.oninput = () => {
+  while (cardsContainer.hasChildNodes()) {
+    cardsContainer.removeChild(cardsContainer.firstChild);
+  }
+
+  const query = input.value;
+  const filteredUsers = users.filter((user) => {
+    return user.name.toLowerCase().trim().includes(query.toLowerCase().trim())
+  })
+
+  filteredUsers.forEach(user => {
+    const card = userCreate(user);
+    cardsContainer.appendChild(card);
+  });
+}
+
+document.body.onload = function() {
+  users.forEach(user => {
+    const card = userCreate(user);
+    cardsContainer.appendChild(card);
+  });
+}
